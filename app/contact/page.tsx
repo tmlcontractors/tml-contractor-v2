@@ -33,28 +33,31 @@ export default function ContactPage() {
     setStatus("");
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+  "https://script.google.com/macros/s/AKfycbw2ISC5gWBDQOvM6yeYDTeTOmJBKP9ZRA7yGxafoaP36gK8dIAmOJLKgiMcJud4WA5U/exec",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8",
+    },
+    body: JSON.stringify(formData),
+    redirect: "follow",
+  }
+);
 
       const result = await response.json();
 
-      if (response.ok) {
-        setStatus("success");
+      setStatus("success");
 
-        setFormData({
-          name: "",
-          phone: "",
-          email: "",
-          address: "",
-          service: "",
-          contactMethod: "Phone",
-          message: "",
-        });
+setFormData({
+  name: "",
+  phone: "",
+  email: "",
+  address: "",
+  service: "",
+  contactMethod: "Phone",
+  message: "",
+});
       } else {
         console.error(result);
         setStatus("error");
