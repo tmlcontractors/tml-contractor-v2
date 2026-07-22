@@ -18,7 +18,9 @@ export default function ContactPage() {
   });
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) {
     setFormData({
       ...formData,
@@ -26,7 +28,9 @@ export default function ContactPage() {
     });
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
     e.preventDefault();
 
     setLoading(true);
@@ -34,40 +38,37 @@ export default function ContactPage() {
 
     try {
       const response = await fetch(
-  "https://script.google.com/macros/s/AKfycbw2ISC5gWBDQOvM6yeYDTeTOmJBKP9ZRA7yGxafoaP36gK8dIAmOJLKgiMcJud4WA5U/exec",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8",
-    },
-    body: JSON.stringify(formData),
-    redirect: "follow",
-  }
-);
+        "https://script.google.com/macros/s/AKfycbw2ISC5gWBDQOvM6yeYDTeTOmJBKP9ZRA7yGxafoaP36gK8dIAmOJLKgiMcJud4WA5U/exec",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-      const result = await response.json();
+      if (!response.ok) {
+        throw new Error("Failed to send form.");
+      }
 
       setStatus("success");
 
-setFormData({
-  name: "",
-  phone: "",
-  email: "",
-  address: "",
-  service: "",
-  contactMethod: "Phone",
-  message: "",
-});
-      } else {
-        console.error(result);
-        setStatus("error");
-      }
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        service: "",
+        contactMethod: "Phone",
+        message: "",
+      });
     } catch (error) {
       console.error(error);
       setStatus("error");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   }
 
   return (
@@ -77,7 +78,7 @@ setFormData({
         <div className="mx-auto max-w-7xl px-6 text-center">
 
           <p className="uppercase tracking-[0.35em] text-[#C39748]">
-            Contact TML Contractors
+            CONTACT TML CONTRACTORS
           </p>
 
           <h1 className="mt-4 text-5xl font-black md:text-6xl">
@@ -85,8 +86,8 @@ setFormData({
           </h1>
 
           <p className="mx-auto mt-6 max-w-3xl text-lg text-zinc-400">
-            Tell us about your project and we'll contact you with a free,
-            no-obligation estimate.
+            Fill out the form below and one of our project specialists
+            will contact you to schedule your FREE estimate.
           </p>
 
         </div>
@@ -100,7 +101,10 @@ setFormData({
             Send Us a Message
           </h2>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-5"
+          >
 
             <input
               name="name"
@@ -121,8 +125,8 @@ setFormData({
             />
 
             <input
-              name="email"
               type="email"
+              name="email"
               value={formData.email}
               onChange={handleChange}
               required
@@ -178,8 +182,7 @@ setFormData({
               placeholder="Tell us about your project..."
               className="w-full rounded-xl border border-zinc-700 bg-black p-4 outline-none focus:border-[#C39748]"
             />
-
-            <button
+                        <button
               type="submit"
               disabled={loading}
               className="w-full rounded-xl bg-[#C39748] py-4 text-lg font-bold text-black transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
@@ -195,13 +198,10 @@ setFormData({
 
             {status === "error" && (
               <div className="rounded-xl border border-red-700 bg-red-900/30 p-4 text-red-300">
-                Something went wrong while sending your request. Please try
-                again.
+                Something went wrong while sending your request. Please try again.
               </div>
             )}
-
           </form>
-
         </div>
 
         <div>
@@ -232,7 +232,9 @@ setFormData({
               <MapPin className="mt-1 text-[#C39748]" />
               <div>
                 <h3 className="font-bold">Service Area</h3>
-                <p className="text-zinc-400">Serving All of Michigan</p>
+                <p className="text-zinc-400">
+                  Serving All of Michigan
+                </p>
               </div>
             </div>
 
@@ -240,8 +242,12 @@ setFormData({
               <Clock className="mt-1 text-[#C39748]" />
               <div>
                 <h3 className="font-bold">Business Hours</h3>
-                <p className="text-zinc-400">Monday – Friday</p>
-                <p className="text-zinc-400">8:00 AM – 6:00 PM</p>
+                <p className="text-zinc-400">
+                  Monday – Friday
+                </p>
+                <p className="text-zinc-400">
+                  8:00 AM – 6:00 PM
+                </p>
               </div>
             </div>
 
