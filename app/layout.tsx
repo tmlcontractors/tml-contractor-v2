@@ -1,39 +1,22 @@
-import Header from "@/components/Header";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "TML Contractor",
-  description: "Building Michigan One Project at a Time",
+  title: "TML Contractor | General Contracting in Southeast Michigan",
+  description: "TML Contractor provides residential and commercial construction, remodeling, painting, roofing, maintenance, and property improvement services throughout Southeast Michigan.",
+  metadataBase: new URL("https://tmlcontractors.com"),
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "TML Contractor | General Contracting in Southeast Michigan",
+    description: "Residential and commercial construction, remodeling, roofing, painting, maintenance, and property improvement services throughout Southeast Michigan.",
+    url: "https://tmlcontractors.com",
+    siteName: "TML Contractor",
+    type: "website",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-black text-white">
-  <Header />
-  <main className="pt-20 flex-1">
-    {children}
-  </main>
-</body>
-    </html>
-  );
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en"><body><Header /><main>{children}</main><Footer /></body></html>;
 }

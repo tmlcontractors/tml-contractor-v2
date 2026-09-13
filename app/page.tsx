@@ -1,25 +1,3 @@
-import Hero from "@/components/home/Hero";
-import Stats from "@/components/home/Stats";
-import WhyChooseUs from "@/components/home/WhyChooseUs";
-import Services from "@/components/home/Services";
-import FeaturedProjects from "@/components/home/FeaturedProjects";
-import Reviews from "@/components/home/Reviews";
-import CallToAction from "@/components/home/CallToAction";
-import Contact from "@/components/home/Contact";
-import Footer from "@/components/home/Footer";
-
-export default function Home() {
-  return (
-    <>
-      <Hero />
-      <Stats />
-      <WhyChooseUs />
-      <Services />
-      <FeaturedProjects />
-      <Reviews />
-      <Contact />
-      <CallToAction />
-      <Footer />
-    </>
-  );
-}
+import Link from 'next/link';
+const services=[['Roofing & Exterior','Roofing, painting, windows, doors, gutters, decks, fences, and pressure washing.'],['Remodeling & Interior','Kitchens, bathrooms, basements, flooring, drywall, and interior painting.'],['Painting','Interior and exterior painting for homes and commercial properties.'],['Windows & Doors','Replacement solutions that improve function, appearance, and comfort.'],['Decks & Fences','Outdoor improvements built around how you use your property.'],['Maintenance & Property Services','Commercial maintenance, cleanouts, and junk removal.']];
+export default function Home(){return <><section className="hero"><div className="container hero-inner"><div className="eyebrow">General Contracting • Residential • Commercial</div><h1>Built by TML.<br/><span>Built to Last.</span></h1><p>Quality construction, remodeling, and property improvement services for homes, businesses, and commercial properties throughout Southeast Michigan.</p><div className="hero-actions"><Link className="btn btn-gold" href="/contact">Request a Free Estimate</Link><a className="btn btn-outline" href="tel:3137290398">Call (313) 729-0398</a></div><div className="hero-badges"><div><strong>Quality Workmanship</strong><span>Built with care and attention.</span></div><div><strong>Reliable Service</strong><span>Clear, dependable communication.</span></div><div><strong>Residential & Commercial</strong><span>One contractor, multiple solutions.</span></div></div></div></section><section className="split-panel"><div className="panel panel-light"><div className="eyebrow">Residential</div><h2 className="section-title">Building Better Homes</h2><p>From roofing and remodeling to painting, flooring, decks, fences, and property improvements.</p><Link className="btn btn-dark" href="/residential">View Residential Services</Link></div><div className="panel panel-dark"><div className="eyebrow">Commercial</div><h2 className="section-title">Built for Business</h2><p>Reliable construction, remodeling, maintenance, and property improvement services for businesses and commercial properties.</p><Link className="btn btn-gold" href="/commercial">View Commercial Services</Link></div></section><section className="section"><div className="container"><div className="eyebrow">Our Services</div><h2 className="section-title">Build. Improve. Maintain.</h2><p className="section-copy">TML provides a broad range of construction and property services for residential and commercial customers.</p><div className="grid grid-3" style={{marginTop:35}}>{services.map(([n,d])=><div className="card service-card" key={n}><div className="service-icon">+</div><h3>{n}</h3><p>{d}</p></div>)}</div><div style={{textAlign:'center',marginTop:28}}><Link className="btn btn-dark" href="/services">View All Services</Link></div></div></section><section className="section section-dark"><div className="container"><div className="eyebrow">Why Choose TML</div><h2 className="section-title">Quality Work. Reliable Service.</h2><div className="grid grid-4" style={{marginTop:35}}>{[['Quality Workmanship','We focus on doing the work properly, with attention to the details that matter.'],['Reliable Service','Clear communication and dependable service from project start to completion.'],['Attention to Detail','Every project deserves careful planning, preparation, and execution.'],['Residential & Commercial','One contractor for a wide range of construction and property improvement needs.']].map(([n,d])=><div key={n}><h3>{n}</h3><p className="section-copy">{d}</p></div>)}</div></div></section><section className="section area"><div className="container"><div className="eyebrow">Service Area</div><h2 className="section-title">Proudly Serving Southeast Michigan</h2><p className="section-copy">TML Contractor serves residential and commercial customers throughout Wayne, Oakland, Macomb, Washtenaw, Monroe, and Livingston counties, including Western Wayne and Downriver communities.</p></div></section><section className="section cta"><div className="container cta-inner"><div><div className="eyebrow">Ready to Get Started?</div><h2 className="section-title">Let’s Build Something Great.</h2><p>Tell us about your project and let’s discuss how TML Contractor can help.</p></div><div style={{display:'flex',gap:12,flexWrap:'wrap'}}><Link className="btn btn-gold" href="/contact">Request a Free Estimate</Link><a className="btn btn-outline" href="tel:3137290398">Call (313) 729-0398</a></div></div></section></>}
