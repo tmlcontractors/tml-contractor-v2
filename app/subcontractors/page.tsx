@@ -11,7 +11,7 @@ export default function Subcontractors() {
       <div className="container">
         <div className="eyebrow">TML Contractor</div>
         <h1>Become a TML Subcontractor.</h1>
-        <p className="section-copy">TML Contractor is building a network of qualified subcontractors and trade professionals for residential and commercial construction projects throughout Southeast Michigan.</p>
+        <p className="section-copy">TML Contractor is building a network of qualified subcontractors and trade professionals for residential and commercial construction projects throughout Southeast Michigan & Ohio.</p>
       </div>
     </section>
     <section className="section">
