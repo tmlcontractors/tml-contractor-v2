@@ -2,7 +2,7 @@ import SubcontractorForm from '@/components/SubcontractorForm';
 
 export const metadata = {
   title: 'Subcontractor Application | TML Contractor',
-  description: 'Apply to work with TML Contractor as a subcontractor or trade partner serving Southeast Michigan.',
+  description: 'Apply to work with TML Contractor as a subcontractor or trade partner serving Southeast Michigan & Ohio.',
 };
 
 export default function Subcontractors() {
