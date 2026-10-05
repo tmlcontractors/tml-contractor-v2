@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 const trades = ['Roofing','Drywall','Painting','Flooring','Framing','Carpentry','Electrical','Plumbing','HVAC','Windows & Doors','Gutters','Decks & Fences','Concrete','Masonry','Demolition','General Remodeling','Other'];
-const counties = ['Wayne','Oakland','Macomb','Washtenaw','Monroe','Livingston','Other Southeast Michigan'];
+const counties = ['Wayne','Oakland','Macomb','Washtenaw','Monroe','Livingston','Ohio','Other Southeast Michigan'];
 
 export default function SubcontractorForm() {
   const [sent,setSent]=useState(false);
